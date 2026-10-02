@@ -10,6 +10,12 @@ class Network(object):
         self.weights = [np.random.randn(y, x) for x, y in zip(sizes[:-1], sizes[1:])]
         # Om te beginnen worden alle weights en biases willekeurig ingesteld.
 
+    def feedforward(self, a):
+        # Functie die het neurale netwerk activeert en uitvoervector geeft.
+        for b, w in zip(self.biases, self.weights):
+            a = sigmoid(np.dot(w, a)+b)
+        return a
+    
 
 
 def sigmoid(z):
